@@ -3,10 +3,12 @@ package com.routemate.backend.trip.service;
 import com.routemate.backend.common.exception.BusinessRuleViolationException;
 import com.routemate.backend.common.exception.ResourceNotFoundException;
 import com.routemate.backend.trip.dto.CreateTripRequest;
+import com.routemate.backend.trip.dto.LocationUploadRequest;
 import com.routemate.backend.trip.dto.TripDetailDto;
 import com.routemate.backend.trip.dto.TripDto;
 import com.routemate.backend.trip.mapper.TripMapper;
 import com.routemate.backend.trip.model.*;
+import com.routemate.backend.trip.repository.TripLocationVerificationRepository;
 import com.routemate.backend.trip.repository.TripParticipantRepository;
 import com.routemate.backend.trip.repository.TripRepository;
 import com.routemate.backend.trip.repository.TripMessageRepository;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -34,6 +37,7 @@ public class TripService {
     private final TripParticipantRepository participantRepository;
     private final UserRepository userRepository;
     private final TripMessageRepository tripMessageRepository;
+    private final TripLocationVerificationRepository locationVerificationRepository;
 
     // --- Trip CRUD ---
 
@@ -65,6 +69,12 @@ public class TripService {
     @Transactional
     public TripDto createTrip(CreateTripRequest request) {
         User driver = getCurrentUser();
+
+        // Block trip creation if user already has an active trip as driver
+        if (tripRepository.hasActiveTripAsDriver(driver.getId())) {
+            throw new BusinessRuleViolationException(
+                "You already have an active trip. Please close it before creating a new one.");
+        }
 
         Trip trip = Trip.create(
             driver,
@@ -280,7 +290,7 @@ public class TripService {
     }
 
     /**
-     * Complete the trip.
+     * Complete the trip. Requires all confirmed participants to have uploaded location.
      */
     @Transactional
     public TripDetailDto completeTrip(Long tripId) {
@@ -292,9 +302,40 @@ public class TripService {
             throw new BusinessRuleViolationException("Only LIVE trips can be completed");
         }
 
+        // Verify all confirmed participants have uploaded their location
+        long confirmedCount = participantRepository.countByTripIdAndConfirmationStatus(
+            tripId, ConfirmationStatus.CONFIRMED);
+        long verifiedCount = locationVerificationRepository.countByTripId(tripId);
+
+        if (verifiedCount < confirmedCount) {
+            throw new BusinessRuleViolationException(
+                "All confirmed participants must upload their location before the trip can be completed. "
+                + verifiedCount + "/" + confirmedCount + " verified.");
+        }
+
         trip.complete();
         tripRepository.save(trip);
         log.info("Trip {} completed", tripId);
+
+        return TripMapper.toDetailDto(trip);
+    }
+
+    /**
+     * Close the trip (organizer only). Terminal state that frees user to create new trips.
+     */
+    @Transactional
+    public TripDetailDto closeTrip(Long tripId) {
+        Trip trip = findTripOrThrow(tripId);
+        User organizer = getCurrentUser();
+        ensureOrganizer(trip, organizer);
+
+        if (trip.getStatus() != TripStatus.COMPLETED) {
+            throw new BusinessRuleViolationException("Only COMPLETED trips can be closed");
+        }
+
+        trip.close();
+        tripRepository.save(trip);
+        log.info("Trip {} closed by organizer {}", tripId, organizer.getEmail());
 
         return TripMapper.toDetailDto(trip);
     }
@@ -308,7 +349,8 @@ public class TripService {
         User organizer = getCurrentUser();
         ensureOrganizer(trip, organizer);
 
-        if (trip.getStatus() == TripStatus.COMPLETED || trip.getStatus() == TripStatus.DELETED) {
+        if (trip.getStatus() == TripStatus.COMPLETED || trip.getStatus() == TripStatus.CLOSED
+                || trip.getStatus() == TripStatus.DELETED) {
             throw new BusinessRuleViolationException("Cannot cancel a " + trip.getStatus() + " trip");
         }
 
@@ -317,6 +359,75 @@ public class TripService {
         log.info("Trip {} cancelled by organizer {}", tripId, organizer.getEmail());
 
         return TripMapper.toDetailDto(trip);
+    }
+
+    // --- Location Verification ---
+
+    /**
+     * Upload current location to verify trip completion.
+     */
+    @Transactional
+    public Map<String, Object> uploadLocation(Long tripId, LocationUploadRequest request) {
+        Trip trip = findTripOrThrow(tripId);
+        User user = getCurrentUser();
+        ensureConfirmedParticipant(tripId, user.getId());
+
+        if (trip.getStatus() != TripStatus.LIVE) {
+            throw new BusinessRuleViolationException("Location can only be uploaded for LIVE trips");
+        }
+
+        if (locationVerificationRepository.existsByTripIdAndUserId(tripId, user.getId())) {
+            throw new BusinessRuleViolationException("You have already uploaded your location");
+        }
+
+        TripLocationVerification verification = TripLocationVerification.create(
+            trip, user, request.latitude(), request.longitude());
+        locationVerificationRepository.save(verification);
+        log.info("User {} uploaded location for trip {}", user.getEmail(), tripId);
+
+        long confirmedCount = participantRepository.countByTripIdAndConfirmationStatus(
+            tripId, ConfirmationStatus.CONFIRMED);
+        long verifiedCount = locationVerificationRepository.countByTripId(tripId);
+
+        return Map.of(
+            "message", "Location uploaded successfully",
+            "verifiedCount", verifiedCount,
+            "totalRequired", confirmedCount,
+            "allVerified", verifiedCount >= confirmedCount
+        );
+    }
+
+    /**
+     * Get location verification status for a trip.
+     */
+    @Transactional(readOnly = true)
+    public Map<String, Object> getLocationStatus(Long tripId) {
+        Trip trip = findTripOrThrow(tripId);
+        User user = getCurrentUser();
+        ensureConfirmedParticipant(tripId, user.getId());
+
+        long confirmedCount = participantRepository.countByTripIdAndConfirmationStatus(
+            tripId, ConfirmationStatus.CONFIRMED);
+        long verifiedCount = locationVerificationRepository.countByTripId(tripId);
+        boolean currentUserVerified = locationVerificationRepository.existsByTripIdAndUserId(
+            tripId, user.getId());
+
+        return Map.of(
+            "verifiedCount", verifiedCount,
+            "totalRequired", confirmedCount,
+            "allVerified", verifiedCount >= confirmedCount,
+            "currentUserVerified", currentUserVerified
+        );
+    }
+
+    /**
+     * Check if current user has an active trip as driver.
+     */
+    @Transactional(readOnly = true)
+    public Map<String, Object> getActiveTripStatus() {
+        User user = getCurrentUser();
+        boolean hasActive = tripRepository.hasActiveTripAsDriver(user.getId());
+        return Map.of("hasActiveTrip", hasActive);
     }
 
     // --- Helpers ---

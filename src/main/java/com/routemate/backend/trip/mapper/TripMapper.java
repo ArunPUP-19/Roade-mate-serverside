@@ -72,7 +72,8 @@ public final class TripMapper {
             formatInstant(entity.getCreatedAt()),
             formatInstant(entity.getLockedAt()),
             formatInstant(entity.getStartedAt()),
-            formatInstant(entity.getCompletedAt())
+            formatInstant(entity.getCompletedAt()),
+            formatInstant(entity.getClosedAt())
         );
     }
 

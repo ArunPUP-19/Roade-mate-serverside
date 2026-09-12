@@ -1,6 +1,7 @@
 package com.routemate.backend.trip.controller;
 
 import com.routemate.backend.trip.dto.CreateTripRequest;
+import com.routemate.backend.trip.dto.LocationUploadRequest;
 import com.routemate.backend.trip.dto.TripDetailDto;
 import com.routemate.backend.trip.dto.TripDto;
 import com.routemate.backend.trip.service.TripService;
@@ -148,12 +149,22 @@ public class TripController {
 
     /**
      * PUT /api/trips/{tripId}/complete
-     * Complete the trip.
+     * Complete the trip (requires all participant locations verified).
      */
     @PutMapping("/{tripId}/complete")
     public ResponseEntity<Map<String, Object>> completeTrip(@PathVariable Long tripId) {
         TripDetailDto trip = tripService.completeTrip(tripId);
         return ResponseEntity.ok(Map.of("message", "Trip completed", "trip", trip));
+    }
+
+    /**
+     * PUT /api/trips/{tripId}/close
+     * Close the trip (organizer only). Terminal state.
+     */
+    @PutMapping("/{tripId}/close")
+    public ResponseEntity<Map<String, Object>> closeTrip(@PathVariable Long tripId) {
+        TripDetailDto trip = tripService.closeTrip(tripId);
+        return ResponseEntity.ok(Map.of("message", "Trip closed", "trip", trip));
     }
 
     /**
@@ -164,6 +175,38 @@ public class TripController {
     public ResponseEntity<Map<String, Object>> cancelTrip(@PathVariable Long tripId) {
         TripDetailDto trip = tripService.cancelTrip(tripId);
         return ResponseEntity.ok(Map.of("message", "Trip cancelled", "trip", trip));
+    }
+
+    // --- Location Verification ---
+
+    /**
+     * POST /api/trips/{tripId}/location
+     * Upload live location to verify trip completion.
+     */
+    @PostMapping("/{tripId}/location")
+    public ResponseEntity<Map<String, Object>> uploadLocation(
+            @PathVariable Long tripId,
+            @Valid @RequestBody LocationUploadRequest request) {
+        Map<String, Object> result = tripService.uploadLocation(tripId, request);
+        return ResponseEntity.ok(result);
+    }
+
+    /**
+     * GET /api/trips/{tripId}/location-status
+     * Check location verification status for the trip.
+     */
+    @GetMapping("/{tripId}/location-status")
+    public ResponseEntity<Map<String, Object>> getLocationStatus(@PathVariable Long tripId) {
+        return ResponseEntity.ok(tripService.getLocationStatus(tripId));
+    }
+
+    /**
+     * GET /api/trips/my-active-status
+     * Check if current user has an active trip (for creation restriction).
+     */
+    @GetMapping("/my-active-status")
+    public ResponseEntity<Map<String, Object>> getActiveTripStatus() {
+        return ResponseEntity.ok(tripService.getActiveTripStatus());
     }
 
     // --- Chat ---

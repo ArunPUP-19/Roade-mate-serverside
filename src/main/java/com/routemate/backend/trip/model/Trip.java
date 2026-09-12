@@ -87,6 +87,9 @@ public class Trip {
     @Column(name = "completed_at")
     private Instant completedAt;
 
+    @Column(name = "closed_at")
+    private Instant closedAt;
+
     @Column(name = "data_delete_at")
     private Instant dataDeleteAt;
 
@@ -189,8 +192,13 @@ public class Trip {
     public void complete() {
         this.status = TripStatus.COMPLETED;
         this.completedAt = Instant.now();
-        // Schedule data deletion 30 days after completion
-        this.dataDeleteAt = this.completedAt.plusSeconds(30L * 24 * 60 * 60);
+    }
+
+    public void close() {
+        this.status = TripStatus.CLOSED;
+        this.closedAt = Instant.now();
+        // Schedule data deletion 30 days after formal closure
+        this.dataDeleteAt = this.closedAt.plusSeconds(30L * 24 * 60 * 60);
     }
 
     public void cancel() {

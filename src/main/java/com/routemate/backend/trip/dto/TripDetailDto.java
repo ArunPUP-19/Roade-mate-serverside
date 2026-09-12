@@ -28,5 +28,6 @@ public record TripDetailDto(
     String createdAt,
     String lockedAt,
     String startedAt,
-    String completedAt
+    String completedAt,
+    String closedAt
 ) {}

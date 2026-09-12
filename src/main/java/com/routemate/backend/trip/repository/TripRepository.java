@@ -40,4 +40,20 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     );
 
     List<Trip> findByStatusAndDeletedAtIsNullOrderByCreatedAtDesc(TripStatus status);
+
+    /**
+     * Check if a user has any active (non-terminal) trip as a driver.
+     * Used to enforce the "one active trip at a time" rule.
+     */
+    @Query("""
+        SELECT CASE WHEN COUNT(t) > 0 THEN true ELSE false END FROM Trip t
+        WHERE t.driver.id = :userId
+          AND t.deletedAt IS NULL
+          AND t.status NOT IN (
+            com.routemate.backend.trip.model.TripStatus.CLOSED,
+            com.routemate.backend.trip.model.TripStatus.CANCELLED,
+            com.routemate.backend.trip.model.TripStatus.DELETED
+          )
+        """)
+    boolean hasActiveTripAsDriver(@Param("userId") Long userId);
 }
