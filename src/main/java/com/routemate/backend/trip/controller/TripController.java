@@ -165,4 +165,30 @@ public class TripController {
         TripDetailDto trip = tripService.cancelTrip(tripId);
         return ResponseEntity.ok(Map.of("message", "Trip cancelled", "trip", trip));
     }
+
+    // --- Chat ---
+
+    /**
+     * GET /api/trips/{tripId}/chat
+     * Get chat messages for a trip.
+     */
+    @GetMapping("/{tripId}/chat")
+    public ResponseEntity<List<com.routemate.backend.trip.dto.TripMessageDto>> getTripMessages(@PathVariable Long tripId) {
+        return ResponseEntity.ok(tripService.getTripMessages(tripId));
+    }
+
+    /**
+     * POST /api/trips/{tripId}/chat
+     * Send a chat message to a trip.
+     */
+    @PostMapping("/{tripId}/chat")
+    public ResponseEntity<com.routemate.backend.trip.dto.TripMessageDto> sendTripMessage(
+            @PathVariable Long tripId,
+            @RequestBody Map<String, String> payload) {
+        String content = payload.get("content");
+        if (content == null || content.trim().isEmpty()) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(tripService.sendTripMessage(tripId, content.trim()));
+    }
 }

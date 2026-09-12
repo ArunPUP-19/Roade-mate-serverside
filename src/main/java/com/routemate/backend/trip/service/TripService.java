@@ -9,6 +9,8 @@ import com.routemate.backend.trip.mapper.TripMapper;
 import com.routemate.backend.trip.model.*;
 import com.routemate.backend.trip.repository.TripParticipantRepository;
 import com.routemate.backend.trip.repository.TripRepository;
+import com.routemate.backend.trip.repository.TripMessageRepository;
+import com.routemate.backend.trip.dto.TripMessageDto;
 import com.routemate.backend.user.model.User;
 import com.routemate.backend.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +33,7 @@ public class TripService {
     private final TripRepository tripRepository;
     private final TripParticipantRepository participantRepository;
     private final UserRepository userRepository;
+    private final TripMessageRepository tripMessageRepository;
 
     // --- Trip CRUD ---
 
@@ -333,6 +336,61 @@ public class TripService {
     private void ensureOrganizer(Trip trip, User user) {
         if (!trip.isOrganizer(user)) {
             throw new BusinessRuleViolationException("Only the trip organizer can perform this action");
+        }
+    }
+
+    // --- Chat ---
+
+    /**
+     * Get all chat messages for a trip. Validates user is confirmed participant.
+     */
+    @Transactional(readOnly = true)
+    public List<TripMessageDto> getTripMessages(Long tripId) {
+        Trip trip = findTripOrThrow(tripId);
+        User user = getCurrentUser();
+        ensureConfirmedParticipant(tripId, user.getId());
+
+        List<TripMessage> messages = tripMessageRepository.findByTripIdOrderByCreatedAtAsc(tripId);
+        return messages.stream()
+            .map(m -> TripMessageDto.builder()
+                .id(m.getId())
+                .senderId(m.getSender().getPublicId())
+                .senderName(m.getSender().getDisplayName())
+                .content(m.getContent())
+                .createdAt(m.getCreatedAt())
+                .build())
+            .toList();
+    }
+
+    /**
+     * Send a new chat message to a trip.
+     */
+    @Transactional
+    public TripMessageDto sendTripMessage(Long tripId, String content) {
+        Trip trip = findTripOrThrow(tripId);
+        User user = getCurrentUser();
+        ensureConfirmedParticipant(tripId, user.getId());
+
+        TripMessage message = TripMessage.create(trip, user, content);
+        message = tripMessageRepository.save(message);
+
+        log.info("User {} sent a message in trip {}", user.getEmail(), tripId);
+
+        return TripMessageDto.builder()
+            .id(message.getId())
+            .senderId(user.getPublicId())
+            .senderName(user.getDisplayName())
+            .content(message.getContent())
+            .createdAt(message.getCreatedAt())
+            .build();
+    }
+
+    private void ensureConfirmedParticipant(Long tripId, Long userId) {
+        TripParticipant participant = participantRepository.findByTripIdAndUserId(tripId, userId)
+            .orElseThrow(() -> new BusinessRuleViolationException("You are not a participant of this trip"));
+            
+        if (participant.getConfirmationStatus() != ConfirmationStatus.CONFIRMED) {
+            throw new BusinessRuleViolationException("Only confirmed participants can access trip chat");
         }
     }
 }
