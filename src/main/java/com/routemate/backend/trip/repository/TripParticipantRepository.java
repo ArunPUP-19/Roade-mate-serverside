@@ -1,6 +1,7 @@
 package com.routemate.backend.trip.repository;
 
 import com.routemate.backend.trip.model.ConfirmationStatus;
+import com.routemate.backend.trip.model.ParticipantRole;
 import com.routemate.backend.trip.model.TripParticipant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -26,4 +27,6 @@ public interface TripParticipantRepository extends JpaRepository<TripParticipant
     boolean existsByTripIdAndUserId(Long tripId, Long userId);
 
     long countByTripIdAndConfirmationStatus(Long tripId, ConfirmationStatus status);
+
+    List<TripParticipant> findByUserIdAndRole(Long userId, ParticipantRole role);
 }

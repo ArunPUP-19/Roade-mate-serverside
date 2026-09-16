@@ -1,0 +1,5868 @@
+2026-09-16T09:56:34.719+05:30  INFO 24600 --- [routemate-backend] [main] c.r.backend.RouteMateApplication         : Starting RouteMateApplication using Java 17.0.12 with PID 24600 (D:\Arun\Updated\Roade-mate-main\Roade-mate-main\backend\target\classes started by Arun in D:\Arun\Updated\Roade-mate-main\Roade-mate-main\backend)
+2026-09-16T09:56:34.728+05:30 DEBUG 24600 --- [routemate-backend] [main] c.r.backend.RouteMateApplication         : Running with Spring Boot v3.5.16, Spring v6.2.19
+2026-09-16T09:56:34.733+05:30  INFO 24600 --- [routemate-backend] [main] c.r.backend.RouteMateApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-09-16T09:56:36.590+05:30  INFO 24600 --- [routemate-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-16T09:56:36.787+05:30  INFO 24600 --- [routemate-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 164 ms. Found 7 JPA repository interfaces.
+2026-09-16T09:56:37.778+05:30  INFO 24600 --- [routemate-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-09-16T09:56:37.807+05:30  INFO 24600 --- [routemate-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-16T09:56:37.808+05:30  INFO 24600 --- [routemate-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-09-16T09:56:37.927+05:30  INFO 24600 --- [routemate-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-09-16T09:56:37.928+05:30  INFO 24600 --- [routemate-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3105 ms
+2026-09-16T09:56:38.483+05:30  INFO 24600 --- [routemate-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-16T09:56:38.783+05:30  INFO 24600 --- [routemate-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:routemate user=SA
+2026-09-16T09:56:38.786+05:30  INFO 24600 --- [routemate-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-16T09:56:38.871+05:30  INFO 24600 --- [routemate-backend] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:routemate (H2 2.3)
+2026-09-16T09:56:39.020+05:30  INFO 24600 --- [routemate-backend] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+2026-09-16T09:56:39.024+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbValidate     : Successfully validated 12 migrations (execution time 00:00.121s)
+2026-09-16T09:56:39.032+05:30  INFO 24600 --- [routemate-backend] [main] org.flywaydb.core.Flyway                 : All configured schemas are empty; baseline operation skipped. A baseline or migration script with a lower version than the baseline version may execute if available. Check the Schemas parameter if this is not intended.
+2026-09-16T09:56:39.035+05:30  INFO 24600 --- [routemate-backend] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+2026-09-16T09:56:39.083+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2026-09-16T09:56:39.096+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "1 - create user table"
+2026-09-16T09:56:39.130+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2 - create trip table"
+2026-09-16T09:56:39.147+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "3 - create ride request table"
+2026-09-16T09:56:39.160+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "4 - insert seed data"
+2026-09-16T09:56:39.171+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "5 - reset identity counters"
+2026-09-16T09:56:39.197+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "6 - create trip participant table"
+2026-09-16T09:56:39.209+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "7 - add trip lifecycle columns"
+2026-09-16T09:56:39.254+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "8 - add trip cost and negotiable columns"
+2026-09-16T09:56:39.280+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "9 - create trip message table"
+2026-09-16T09:56:39.288+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "10 - add closed at column"
+2026-09-16T09:56:39.301+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "11 - create trip location verification table"
+2026-09-16T09:56:39.309+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "12 - create notification table"
+2026-09-16T09:56:39.327+05:30  INFO 24600 --- [routemate-backend] [main] o.f.core.internal.command.DbMigrate      : Successfully applied 12 migrations to schema "PUBLIC", now at version v12 (execution time 00:00.143s)
+2026-09-16T09:56:39.478+05:30  INFO 24600 --- [routemate-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-16T09:56:39.617+05:30  INFO 24600 --- [routemate-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-09-16T09:56:39.668+05:30  INFO 24600 --- [routemate-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-16T09:56:40.038+05:30  INFO 24600 --- [routemate-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-16T09:56:40.176+05:30  INFO 24600 --- [routemate-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-16T09:56:41.630+05:30  INFO 24600 --- [routemate-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-16T09:56:41.678+05:30  INFO 24600 --- [routemate-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-16T09:56:42.162+05:30 DEBUG 24600 --- [routemate-backend] [main] c.r.b.a.s.JwtAuthenticationFilter        : Filter 'jwtAuthenticationFilter' configured for use
+2026-09-16T09:56:42.276+05:30  INFO 24600 --- [routemate-backend] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-09-16T09:56:42.277+05:30  WARN 24600 --- [routemate-backend] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-09-16T09:56:42.428+05:30  INFO 24600 --- [routemate-backend] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-16T09:56:44.295+05:30  INFO 24600 --- [routemate-backend] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-09-16T09:56:44.905+05:30  INFO 24600 --- [routemate-backend] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:routemate'
+2026-09-16T09:56:45.039+05:30  INFO 24600 --- [routemate-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-09-16T09:56:45.062+05:30  INFO 24600 --- [routemate-backend] [main] c.r.backend.RouteMateApplication         : Started RouteMateApplication in 11.149 seconds (process running for 11.892)
+2026-09-16T09:57:16.849+05:30  INFO 24600 --- [routemate-backend] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-16T09:57:16.851+05:30  INFO 24600 --- [routemate-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-16T09:57:16.854+05:30  INFO 24600 --- [routemate-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-09-16T09:57:17.577+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T09:57:17.578+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T09:57:17.737+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T09:57:17.741+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T09:57:46.771+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T09:58:16.786+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T09:58:46.739+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T09:59:16.722+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T09:59:46.735+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:00:16.735+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:00:43.668+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:00:43.670+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:00:43.689+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:00:43.689+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:00:58.868+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:00:59.141+05:30  WARN 24600 --- [routemate-backend] [http-nio-8080-exec-5] c.r.b.c.e.GlobalExceptionHandler         : Authentication failed: Bad credentials
+2026-09-16T10:01:18.241+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null 
+    fetch
+        first ? rows only
+2026-09-16T10:01:18.519+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    insert 
+    into
+        app_user
+        (created_at, deleted_at, display_name, email, password_hash, public_id, rating, role, updated_at, version, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-16T10:01:18.935+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:01:18.936+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:01:18.977+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:01:18.977+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:01:19.026+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:01:19.027+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.participant_public_id,
+        n1_0.public_id,
+        n1_0.recipient_id,
+        n1_0.sender_id,
+        n1_0.title,
+        n1_0.trip_id,
+        n1_0.type 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+    order by
+        n1_0.created_at desc
+2026-09-16T10:01:49.387+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:01:49.402+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:01:49.411+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:01:56.385+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null 
+    fetch
+        first ? rows only
+2026-09-16T10:01:56.606+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    insert 
+    into
+        app_user
+        (created_at, deleted_at, display_name, email, password_hash, public_id, rating, role, updated_at, version, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-16T10:01:56.671+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:01:56.671+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:01:56.684+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:01:56.684+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:01:56.694+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:01:56.696+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.participant_public_id,
+        n1_0.public_id,
+        n1_0.recipient_id,
+        n1_0.sender_id,
+        n1_0.title,
+        n1_0.trip_id,
+        n1_0.type 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+    order by
+        n1_0.created_at desc
+2026-09-16T10:02:14.702+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:14.702+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:14.712+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:14.715+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:14.721+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:02:14.722+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.participant_public_id,
+        n1_0.public_id,
+        n1_0.recipient_id,
+        n1_0.sender_id,
+        n1_0.title,
+        n1_0.trip_id,
+        n1_0.type 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+    order by
+        n1_0.created_at desc
+2026-09-16T10:02:14.737+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:14.743+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:14.757+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:14.757+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:14.762+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.participant_public_id,
+        n1_0.public_id,
+        n1_0.recipient_id,
+        n1_0.sender_id,
+        n1_0.title,
+        n1_0.trip_id,
+        n1_0.type 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+    order by
+        n1_0.created_at desc
+2026-09-16T10:02:14.762+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:02:19.385+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:19.416+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:19.438+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:02:27.386+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:27.416+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:27.442+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:02:36.602+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null 
+    fetch
+        first ? rows only
+2026-09-16T10:02:36.846+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    insert 
+    into
+        app_user
+        (created_at, deleted_at, display_name, email, password_hash, public_id, rating, role, updated_at, version, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-16T10:02:36.915+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:36.915+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:36.925+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:36.927+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:36.934+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.participant_public_id,
+        n1_0.public_id,
+        n1_0.recipient_id,
+        n1_0.sender_id,
+        n1_0.title,
+        n1_0.trip_id,
+        n1_0.type 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+    order by
+        n1_0.created_at desc
+2026-09-16T10:02:36.939+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:02:49.385+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:49.428+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:49.446+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:02:57.385+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:57.416+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:02:57.437+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:03:06.921+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:06.959+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:06.976+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:03:19.391+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:19.412+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:19.425+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:03:27.371+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:27.380+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:27.404+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:03:36.930+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:36.966+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:36.982+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:03:49.379+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:49.397+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:49.410+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:03:57.377+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:57.392+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:03:57.404+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:04:06.921+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:06.947+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:06.965+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:04:19.382+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:19.412+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:19.426+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:04:27.365+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:27.389+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:27.406+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:04:36.930+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:36.946+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:36.959+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:04:39.487+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:39.601+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:39.687+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        case 
+            when count(t1_0.id)>0 
+                then true 
+            else false 
+    end 
+from
+    trip t1_0 
+where
+    t1_0.driver_id=? 
+    and t1_0.deleted_at is null 
+    and t1_0.status not in ('CLOSED', 'CANCELLED', 'DELETED')
+2026-09-16T10:04:39.765+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    insert 
+    into
+        trip
+        (closed_at, completed_at, created_at, data_delete_at, deleted_at, destination, driver_id, driver_name, driver_rating, estimated_cost, locked_at, negotiable, public_id, seats_available, started_at, starting_location, status, total_cost, total_seats, trip_date, trip_time, updated_at, vehicle, vehicle_details, version, your_split, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-16T10:04:39.782+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    insert 
+    into
+        trip_participant
+        (confirmation_status, confirmed_at, created_at, public_id, role, trip_id, updated_at, user_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-16T10:04:39.789+05:30  INFO 24600 --- [routemate-backend] [http-nio-8080-exec-8] c.r.backend.trip.service.TripService     : Trip created: id=100, from=Chennai, Tamil Nadu, to=Coimbatore, Tamil Nadu, driver=arun3@gmail.com
+2026-09-16T10:04:41.402+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        rr1_0.id,
+        rr1_0.created_at,
+        rr1_0.deleted_at,
+        rr1_0.destination,
+        rr1_0.passenger_id,
+        rr1_0.passenger_name,
+        rr1_0.passenger_rating,
+        rr1_0.preferred_time,
+        rr1_0.public_id,
+        rr1_0.request_date,
+        rr1_0.starting_location,
+        rr1_0.status,
+        rr1_0.updated_at,
+        rr1_0.version 
+    from
+        ride_request rr1_0 
+    where
+        rr1_0.deleted_at is null 
+    order by
+        rr1_0.created_at desc
+2026-09-16T10:04:41.438+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.deleted_at is null 
+        and t1_0.status in ('ACTIVE', 'PENDING_CONFIRMATION') 
+        and (
+            ? is null 
+            or lower(t1_0.starting_location) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.destination) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or t1_0.trip_date=?
+        ) 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:04:41.459+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        rr1_0.id,
+        rr1_0.created_at,
+        rr1_0.deleted_at,
+        rr1_0.destination,
+        rr1_0.passenger_id,
+        rr1_0.passenger_name,
+        rr1_0.passenger_rating,
+        rr1_0.preferred_time,
+        rr1_0.public_id,
+        rr1_0.request_date,
+        rr1_0.starting_location,
+        rr1_0.status,
+        rr1_0.updated_at,
+        rr1_0.version 
+    from
+        ride_request rr1_0 
+    where
+        rr1_0.deleted_at is null 
+    order by
+        rr1_0.created_at desc
+2026-09-16T10:04:41.484+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.deleted_at is null 
+        and t1_0.status in ('ACTIVE', 'PENDING_CONFIRMATION') 
+        and (
+            ? is null 
+            or lower(t1_0.starting_location) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.destination) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or t1_0.trip_date=?
+        ) 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:04:47.751+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.deleted_at is null 
+        and t1_0.status in ('ACTIVE', 'PENDING_CONFIRMATION') 
+        and (
+            ? is null 
+            or lower(t1_0.starting_location) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.destination) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or t1_0.trip_date=?
+        ) 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:04:47.752+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        rr1_0.id,
+        rr1_0.created_at,
+        rr1_0.deleted_at,
+        rr1_0.destination,
+        rr1_0.passenger_id,
+        rr1_0.passenger_name,
+        rr1_0.passenger_rating,
+        rr1_0.preferred_time,
+        rr1_0.public_id,
+        rr1_0.request_date,
+        rr1_0.starting_location,
+        rr1_0.status,
+        rr1_0.updated_at,
+        rr1_0.version 
+    from
+        ride_request rr1_0 
+    where
+        rr1_0.deleted_at is null 
+    order by
+        rr1_0.created_at desc
+2026-09-16T10:04:47.778+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        rr1_0.id,
+        rr1_0.created_at,
+        rr1_0.deleted_at,
+        rr1_0.destination,
+        rr1_0.passenger_id,
+        rr1_0.passenger_name,
+        rr1_0.passenger_rating,
+        rr1_0.preferred_time,
+        rr1_0.public_id,
+        rr1_0.request_date,
+        rr1_0.starting_location,
+        rr1_0.status,
+        rr1_0.updated_at,
+        rr1_0.version 
+    from
+        ride_request rr1_0 
+    where
+        rr1_0.deleted_at is null 
+    order by
+        rr1_0.created_at desc
+2026-09-16T10:04:47.779+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.deleted_at is null 
+        and t1_0.status in ('ACTIVE', 'PENDING_CONFIRMATION') 
+        and (
+            ? is null 
+            or lower(t1_0.starting_location) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.destination) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or t1_0.trip_date=?
+        ) 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:04:49.365+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:49.386+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:49.401+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:04:52.060+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.deleted_at is null 
+        and t1_0.status in ('ACTIVE', 'PENDING_CONFIRMATION') 
+        and (
+            ? is null 
+            or lower(t1_0.starting_location) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.destination) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or t1_0.trip_date=?
+        ) 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:04:52.063+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        rr1_0.id,
+        rr1_0.created_at,
+        rr1_0.deleted_at,
+        rr1_0.destination,
+        rr1_0.passenger_id,
+        rr1_0.passenger_name,
+        rr1_0.passenger_rating,
+        rr1_0.preferred_time,
+        rr1_0.public_id,
+        rr1_0.request_date,
+        rr1_0.starting_location,
+        rr1_0.status,
+        rr1_0.updated_at,
+        rr1_0.version 
+    from
+        ride_request rr1_0 
+    where
+        rr1_0.deleted_at is null 
+    order by
+        rr1_0.created_at desc
+2026-09-16T10:04:52.087+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        rr1_0.id,
+        rr1_0.created_at,
+        rr1_0.deleted_at,
+        rr1_0.destination,
+        rr1_0.passenger_id,
+        rr1_0.passenger_name,
+        rr1_0.passenger_rating,
+        rr1_0.preferred_time,
+        rr1_0.public_id,
+        rr1_0.request_date,
+        rr1_0.starting_location,
+        rr1_0.status,
+        rr1_0.updated_at,
+        rr1_0.version 
+    from
+        ride_request rr1_0 
+    where
+        rr1_0.deleted_at is null 
+    order by
+        rr1_0.created_at desc
+2026-09-16T10:04:52.093+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.deleted_at is null 
+        and t1_0.status in ('ACTIVE', 'PENDING_CONFIRMATION') 
+        and (
+            ? is null 
+            or lower(t1_0.starting_location) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.destination) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or t1_0.trip_date=?
+        ) 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:04:53.690+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.deleted_at is null 
+        and t1_0.status in ('ACTIVE', 'PENDING_CONFIRMATION') 
+        and (
+            ? is null 
+            or lower(t1_0.starting_location) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.destination) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or t1_0.trip_date=?
+        ) 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:04:53.690+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        rr1_0.id,
+        rr1_0.created_at,
+        rr1_0.deleted_at,
+        rr1_0.destination,
+        rr1_0.passenger_id,
+        rr1_0.passenger_name,
+        rr1_0.passenger_rating,
+        rr1_0.preferred_time,
+        rr1_0.public_id,
+        rr1_0.request_date,
+        rr1_0.starting_location,
+        rr1_0.status,
+        rr1_0.updated_at,
+        rr1_0.version 
+    from
+        ride_request rr1_0 
+    where
+        rr1_0.deleted_at is null 
+    order by
+        rr1_0.created_at desc
+2026-09-16T10:04:53.690+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:53.697+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:53.713+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        rr1_0.id,
+        rr1_0.created_at,
+        rr1_0.deleted_at,
+        rr1_0.destination,
+        rr1_0.passenger_id,
+        rr1_0.passenger_name,
+        rr1_0.passenger_rating,
+        rr1_0.preferred_time,
+        rr1_0.public_id,
+        rr1_0.request_date,
+        rr1_0.starting_location,
+        rr1_0.status,
+        rr1_0.updated_at,
+        rr1_0.version 
+    from
+        ride_request rr1_0 
+    where
+        rr1_0.deleted_at is null 
+    order by
+        rr1_0.created_at desc
+2026-09-16T10:04:53.713+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:53.718+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.deleted_at is null 
+        and t1_0.status in ('ACTIVE', 'PENDING_CONFIRMATION') 
+        and (
+            ? is null 
+            or lower(t1_0.starting_location) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.destination) like lower(('%'||?||'%')) escape ''
+        ) 
+        and (
+            ? is null 
+            or t1_0.trip_date=?
+        ) 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:04:53.729+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:53.729+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:04:53.738+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.participant_public_id,
+        n1_0.public_id,
+        n1_0.recipient_id,
+        n1_0.sender_id,
+        n1_0.title,
+        n1_0.trip_id,
+        n1_0.type 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+    order by
+        n1_0.created_at desc
+2026-09-16T10:04:53.749+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:53.760+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:53.766+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:53.778+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:04:53.779+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:53.788+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.participant_public_id,
+        n1_0.public_id,
+        n1_0.recipient_id,
+        n1_0.sender_id,
+        n1_0.title,
+        n1_0.trip_id,
+        n1_0.type 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+    order by
+        n1_0.created_at desc
+2026-09-16T10:04:57.371+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:57.407+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:57.421+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:04:57.919+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:04:57.951+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:04:57.970+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id=?
+2026-09-16T10:04:58.027+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:04:58.035+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:04:58.042+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id=?
+2026-09-16T10:04:59.947+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:59.967+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:04:59.981+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:04:59.998+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        tp1_0.id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=? 
+    fetch
+        first ? rows only
+2026-09-16T10:05:00.010+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    insert 
+    into
+        trip_participant
+        (confirmation_status, confirmed_at, created_at, public_id, role, trip_id, updated_at, user_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-16T10:05:00.030+05:30  INFO 24600 --- [routemate-backend] [http-nio-8080-exec-7] c.r.backend.trip.service.TripService     : User arun1@gmail.com requested to join trip 100
+2026-09-16T10:05:00.041+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    insert 
+    into
+        notification
+        (created_at, is_read, message, participant_public_id, public_id, recipient_id, sender_id, title, trip_id, type, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-16T10:05:00.053+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id=?
+2026-09-16T10:05:00.060+05:30  INFO 24600 --- [routemate-backend] [http-nio-8080-exec-7] c.r.b.n.service.NotificationService      : Notification created: type=TRIP_REQUEST, recipient=arun3@gmail.com, trip=100
+2026-09-16T10:05:00.063+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:05:00.107+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    update
+        trip 
+    set
+        closed_at=?,
+        completed_at=?,
+        data_delete_at=?,
+        deleted_at=?,
+        destination=?,
+        driver_id=?,
+        driver_name=?,
+        driver_rating=?,
+        estimated_cost=?,
+        locked_at=?,
+        negotiable=?,
+        seats_available=?,
+        started_at=?,
+        starting_location=?,
+        status=?,
+        total_cost=?,
+        total_seats=?,
+        trip_date=?,
+        trip_time=?,
+        updated_at=?,
+        vehicle=?,
+        vehicle_details=?,
+        version=?,
+        your_split=? 
+    where
+        id=? 
+        and version=?
+2026-09-16T10:05:07.382+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:07.398+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:07.409+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:05:07.443+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:07.457+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:07.466+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.participant_public_id,
+        n1_0.public_id,
+        n1_0.recipient_id,
+        n1_0.sender_id,
+        n1_0.title,
+        n1_0.trip_id,
+        n1_0.type 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+    order by
+        n1_0.created_at desc
+2026-09-16T10:05:07.487+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id in (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-09-16T10:05:13.178+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:13.199+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:13.213+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.participant_public_id,
+        n1_0.public_id,
+        n1_0.recipient_id,
+        n1_0.sender_id,
+        n1_0.title,
+        n1_0.trip_id,
+        n1_0.type 
+    from
+        notification n1_0 
+    where
+        n1_0.public_id=?
+2026-09-16T10:05:13.226+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    update
+        notification 
+    set
+        is_read=?,
+        message=?,
+        participant_public_id=?,
+        recipient_id=?,
+        sender_id=?,
+        title=?,
+        trip_id=?,
+        type=? 
+    where
+        id=?
+2026-09-16T10:05:13.231+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:13.240+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:05:13.246+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id in (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-09-16T10:05:13.264+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:13.274+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:05:13.279+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id in (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-09-16T10:05:13.343+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:13.361+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:13.371+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:13.389+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:13.409+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:13.436+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:13.452+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:13.462+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:13.478+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:13.495+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:18.340+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:18.354+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:18.369+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:18.385+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:18.400+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:20.109+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:20.110+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:20.130+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:20.130+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:20.145+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    left join
+        app_user d1_0 
+            on d1_0.id=t1_0.driver_id 
+    where
+        d1_0.id=? 
+        and t1_0.deleted_at is null 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:05:20.147+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        u1_0.id=? 
+        and tp1_0.role=?
+2026-09-16T10:05:20.155+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:05:20.164+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id=?
+2026-09-16T10:05:20.172+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:20.188+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:20.190+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:20.200+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        u1_0.id=? 
+        and tp1_0.role=?
+2026-09-16T10:05:20.203+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:20.217+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    left join
+        app_user d1_0 
+            on d1_0.id=t1_0.driver_id 
+    where
+        d1_0.id=? 
+        and t1_0.deleted_at is null 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:05:20.220+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:05:20.228+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id=?
+2026-09-16T10:05:24.375+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:24.401+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:24.416+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:05:24.715+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:24.735+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:24.753+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:24.768+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    where
+        tp1_0.public_id=?
+2026-09-16T10:05:24.779+05:30  INFO 24600 --- [routemate-backend] [http-nio-8080-exec-6] c.r.backend.trip.service.TripService     : Participant 65bd7281-2da3-4524-a80d-1c268c5c9cb2 confirmed for trip 100
+2026-09-16T10:05:24.786+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    insert 
+    into
+        notification
+        (created_at, is_read, message, participant_public_id, public_id, recipient_id, sender_id, title, trip_id, type, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-16T10:05:24.794+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id=?
+2026-09-16T10:05:24.799+05:30  INFO 24600 --- [routemate-backend] [http-nio-8080-exec-6] c.r.b.n.service.NotificationService      : Notification created: type=TRIP_REQUEST_ACCEPTED, recipient=arun1@gmail.com, trip=100
+2026-09-16T10:05:24.810+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    update
+        trip_participant 
+    set
+        confirmation_status=?,
+        confirmed_at=?,
+        role=?,
+        trip_id=?,
+        updated_at=?,
+        user_id=? 
+    where
+        id=?
+2026-09-16T10:05:24.816+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        count(tp1_0.id) 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    where
+        t1_0.id=? 
+        and tp1_0.confirmation_status=?
+2026-09-16T10:05:24.825+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:05:24.854+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:24.855+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:24.908+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:24.908+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:24.918+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    left join
+        app_user d1_0 
+            on d1_0.id=t1_0.driver_id 
+    where
+        d1_0.id=? 
+        and t1_0.deleted_at is null 
+    order by
+        t1_0.created_at desc
+2026-09-16T10:05:24.919+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        u1_0.id=? 
+        and tp1_0.role=?
+2026-09-16T10:05:24.928+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:05:24.936+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id=?
+2026-09-16T10:05:27.371+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:27.387+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:27.398+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:05:29.447+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:29.453+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:05:29.462+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id in (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-09-16T10:05:29.493+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:29.505+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        p1_0.trip_id,
+        p1_0.id,
+        p1_0.confirmation_status,
+        p1_0.confirmed_at,
+        p1_0.created_at,
+        p1_0.public_id,
+        p1_0.role,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        trip_participant p1_0 
+    where
+        p1_0.trip_id=?
+2026-09-16T10:05:29.513+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id in (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-09-16T10:05:29.564+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:29.581+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:29.592+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:29.604+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:29.614+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:29.639+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:29.654+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:29.667+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:29.675+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:29.687+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:34.551+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:34.587+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:34.605+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:34.617+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:34.630+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:35.052+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:35.071+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:35.088+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:35.106+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:35.122+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    insert 
+    into
+        trip_message
+        (content, created_at, sender_id, trip_id, id) 
+    values
+        (?, ?, ?, ?, default)
+2026-09-16T10:05:35.131+05:30  INFO 24600 --- [routemate-backend] [http-nio-8080-exec-3] c.r.backend.trip.service.TripService     : User arun3@gmail.com sent a message in trip 100
+2026-09-16T10:05:35.185+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:35.202+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:35.212+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:35.222+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:35.233+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:36.922+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:36.934+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:36.944+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:05:40.367+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:40.373+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:40.378+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:40.386+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:40.391+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:45.358+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:45.363+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:45.370+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:45.378+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:45.388+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:50.368+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:50.375+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:50.380+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:50.389+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:50.397+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:54.369+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:54.375+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:54.379+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:05:54.400+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:54.408+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:54.411+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.participant_public_id,
+        n1_0.public_id,
+        n1_0.recipient_id,
+        n1_0.sender_id,
+        n1_0.title,
+        n1_0.trip_id,
+        n1_0.type 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+    order by
+        n1_0.created_at desc
+2026-09-16T10:05:54.414+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.id in (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-09-16T10:05:55.369+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:55.375+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:05:55.379+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:55.385+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:05:55.393+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:05:57.374+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:57.379+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:05:57.381+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:06:00.367+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:06:00.372+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:06:00.377+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:06:00.382+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:06:00.389+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:06:05.376+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:06:05.382+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:06:05.387+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:06:05.395+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:06:05.404+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at
+2026-09-16T10:06:07.374+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:06:07.381+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:06:07.388+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        count(n1_0.id) 
+    from
+        notification n1_0 
+    left join
+        app_user r1_0 
+            on r1_0.id=n1_0.recipient_id 
+    where
+        r1_0.id=? 
+        and not(n1_0.is_read)
+2026-09-16T10:06:10.392+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:06:10.408+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.closed_at,
+        t1_0.completed_at,
+        t1_0.created_at,
+        t1_0.data_delete_at,
+        t1_0.deleted_at,
+        t1_0.destination,
+        t1_0.driver_id,
+        t1_0.driver_name,
+        t1_0.driver_rating,
+        t1_0.estimated_cost,
+        t1_0.locked_at,
+        t1_0.negotiable,
+        t1_0.public_id,
+        t1_0.seats_available,
+        t1_0.started_at,
+        t1_0.starting_location,
+        t1_0.status,
+        t1_0.total_cost,
+        t1_0.total_seats,
+        t1_0.trip_date,
+        t1_0.trip_time,
+        t1_0.updated_at,
+        t1_0.vehicle,
+        t1_0.vehicle_details,
+        t1_0.version,
+        t1_0.your_split 
+    from
+        trip t1_0 
+    where
+        t1_0.id=?
+2026-09-16T10:06:10.419+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.deleted_at,
+        u1_0.display_name,
+        u1_0.email,
+        u1_0.password_hash,
+        u1_0.public_id,
+        u1_0.rating,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.version 
+    from
+        app_user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.deleted_at is null
+2026-09-16T10:06:10.429+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        tp1_0.id,
+        tp1_0.confirmation_status,
+        tp1_0.confirmed_at,
+        tp1_0.created_at,
+        tp1_0.public_id,
+        tp1_0.role,
+        tp1_0.trip_id,
+        tp1_0.updated_at,
+        tp1_0.user_id 
+    from
+        trip_participant tp1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tp1_0.trip_id 
+    left join
+        app_user u1_0 
+            on u1_0.id=tp1_0.user_id 
+    where
+        t1_0.id=? 
+        and u1_0.id=?
+2026-09-16T10:06:10.449+05:30 DEBUG 24600 --- [routemate-backend] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.content,
+        tm1_0.created_at,
+        tm1_0.sender_id,
+        tm1_0.trip_id 
+    from
+        trip_message tm1_0 
+    left join
+        trip t1_0 
+            on t1_0.id=tm1_0.trip_id 
+    where
+        t1_0.id=? 
+    order by
+        tm1_0.created_at

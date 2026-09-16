@@ -65,6 +65,8 @@ app:
 
 # Logging
 logging:
+  file:
+    name: backend.log
   level:
     com.routemate: DEBUG
     org.hibernate.SQL: DEBUG

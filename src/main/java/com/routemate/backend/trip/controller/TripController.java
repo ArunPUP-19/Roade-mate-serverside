@@ -42,6 +42,24 @@ public class TripController {
     }
 
     /**
+     * GET /api/trips/my-trips
+     * Get trips created by the current user (as driver/organizer).
+     */
+    @GetMapping("/my-trips")
+    public ResponseEntity<Map<String, Object>> getMyTrips() {
+        return ResponseEntity.ok(Map.of("trips", tripService.getMyTrips()));
+    }
+
+    /**
+     * GET /api/trips/my-requests
+     * Get trips the current user has requested to join (as passenger).
+     */
+    @GetMapping("/my-requests")
+    public ResponseEntity<Map<String, Object>> getMyRequests() {
+        return ResponseEntity.ok(Map.of("trips", tripService.getMyRequests()));
+    }
+
+    /**
      * GET /api/trips/{tripId}
      * Get trip detail with participants.
      */

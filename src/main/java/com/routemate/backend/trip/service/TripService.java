@@ -2,6 +2,8 @@ package com.routemate.backend.trip.service;
 
 import com.routemate.backend.common.exception.BusinessRuleViolationException;
 import com.routemate.backend.common.exception.ResourceNotFoundException;
+import com.routemate.backend.notification.model.NotificationType;
+import com.routemate.backend.notification.service.NotificationService;
 import com.routemate.backend.trip.dto.CreateTripRequest;
 import com.routemate.backend.trip.dto.LocationUploadRequest;
 import com.routemate.backend.trip.dto.TripDetailDto;
@@ -38,6 +40,7 @@ public class TripService {
     private final UserRepository userRepository;
     private final TripMessageRepository tripMessageRepository;
     private final TripLocationVerificationRepository locationVerificationRepository;
+    private final NotificationService notificationService;
 
     // --- Trip CRUD ---
 
@@ -140,6 +143,15 @@ public class TripService {
         tripRepository.save(trip);
         log.info("User {} requested to join trip {}", user.getEmail(), tripId);
 
+        // Notify trip organizer about the new join request
+        notificationService.createNotification(
+            trip.getDriver(), user, trip, participant.getPublicId(),
+            NotificationType.TRIP_REQUEST,
+            "New Trip Request",
+            user.getDisplayName() + " wants to join your " +
+                trip.getStartingLocation() + " → " + trip.getDestination() + " trip."
+        );
+
         return TripMapper.toDetailDto(trip);
     }
 
@@ -197,6 +209,15 @@ public class TripService {
         participantRepository.save(participant);
         log.info("Participant {} confirmed for trip {}", participantPublicId, tripId);
 
+        // Notify the participant that their request was accepted
+        notificationService.createNotification(
+            participant.getUser(), organizer, trip, participant.getPublicId(),
+            NotificationType.TRIP_REQUEST_ACCEPTED,
+            "Request Accepted! 🎉",
+            "Your request to join the " +
+                trip.getStartingLocation() + " → " + trip.getDestination() + " trip has been accepted!"
+        );
+
         // Check if all pending participants are now confirmed
         long pendingCount = participantRepository.countByTripIdAndConfirmationStatus(tripId, ConfirmationStatus.PENDING);
         if (pendingCount == 0 && trip.getStatus() == TripStatus.PENDING_CONFIRMATION) {
@@ -234,6 +255,15 @@ public class TripService {
         participantRepository.save(participant);
         tripRepository.save(trip);
         log.info("Participant {} rejected from trip {}", participantPublicId, tripId);
+
+        // Notify the participant that their request was rejected
+        notificationService.createNotification(
+            participant.getUser(), organizer, trip, participant.getPublicId(),
+            NotificationType.TRIP_REQUEST_REJECTED,
+            "Request Not Accepted",
+            "Your request to join the " +
+                trip.getStartingLocation() + " → " + trip.getDestination() + " trip was not accepted."
+        );
 
         return TripMapper.toDetailDto(trip);
     }
@@ -482,6 +512,13 @@ public class TripService {
         User user = getCurrentUser();
         ensureConfirmedParticipant(tripId, user.getId());
 
+        // Enforce: no messages after trip is completed, closed, or cancelled
+        if (trip.getStatus() == TripStatus.COMPLETED || trip.getStatus() == TripStatus.CLOSED
+                || trip.getStatus() == TripStatus.CANCELLED) {
+            throw new BusinessRuleViolationException(
+                "Cannot send messages — trip is " + trip.getStatus());
+        }
+
         TripMessage message = TripMessage.create(trip, user, content);
         message = tripMessageRepository.save(message);
 
@@ -503,5 +540,31 @@ public class TripService {
         if (participant.getConfirmationStatus() != ConfirmationStatus.CONFIRMED) {
             throw new BusinessRuleViolationException("Only confirmed participants can access trip chat");
         }
+    }
+
+    // --- My Trips / My Requests ---
+
+    /**
+     * Get all trips where the current user is the driver (organizer).
+     */
+    @Transactional(readOnly = true)
+    public List<TripDetailDto> getMyTrips() {
+        User user = getCurrentUser();
+        List<Trip> trips = tripRepository.findByDriverIdAndDeletedAtIsNullOrderByCreatedAtDesc(user.getId());
+        return trips.stream().map(TripMapper::toDetailDto).toList();
+    }
+
+    /**
+     * Get all trips where the current user is a passenger (joined trips),
+     * along with their confirmation status.
+     */
+    @Transactional(readOnly = true)
+    public List<TripDetailDto> getMyRequests() {
+        User user = getCurrentUser();
+        List<TripParticipant> participations = participantRepository.findByUserIdAndRole(
+            user.getId(), ParticipantRole.PASSENGER);
+        return participations.stream()
+            .map(p -> TripMapper.toDetailDto(p.getTrip()))
+            .toList();
     }
 }

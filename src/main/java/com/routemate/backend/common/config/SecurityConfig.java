@@ -51,7 +51,13 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/trips/**", "/api/requests/**", "/api/places/**").permitAll()
+                // Personal trip endpoints must be declared BEFORE /api/trips/{tripId} so they are not treated as path variables
+                .requestMatchers(HttpMethod.GET, "/api/trips/my-trips", "/api/trips/my-requests", "/api/trips/my-active-status").authenticated()
+                // Public read-only endpoints — trip listing, detail, and ride requests
+                .requestMatchers(HttpMethod.GET, "/api/trips", "/api/trips/{tripId}").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/requests/**", "/api/places/**").permitAll()
+                // All notification endpoints require authentication
+                .requestMatchers("/api/notifications/**").authenticated()
                 .requestMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
             )
@@ -82,7 +88,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(allowedOrigins.split(",")));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept"));
         configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

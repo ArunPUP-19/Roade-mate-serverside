@@ -56,4 +56,6 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
           )
         """)
     boolean hasActiveTripAsDriver(@Param("userId") Long userId);
+
+    List<Trip> findByDriverIdAndDeletedAtIsNullOrderByCreatedAtDesc(Long driverId);
 }
