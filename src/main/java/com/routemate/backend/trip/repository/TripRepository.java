@@ -27,7 +27,7 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     @Query("""
         SELECT t FROM Trip t
         WHERE t.deletedAt IS NULL
-          AND t.status IN ('ACTIVE', 'PENDING_CONFIRMATION')
+          AND t.status IN ('ACTIVE', 'PENDING_CONFIRMATION', 'AWAITING_MUTUAL_CONFIRM')
           AND (:from IS NULL OR LOWER(t.startingLocation) LIKE LOWER(CONCAT('%', :from, '%')))
           AND (:to IS NULL OR LOWER(t.destination) LIKE LOWER(CONCAT('%', :to, '%')))
           AND (:date IS NULL OR t.tripDate = :date)

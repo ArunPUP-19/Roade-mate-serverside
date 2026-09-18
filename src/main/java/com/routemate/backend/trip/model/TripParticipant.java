@@ -100,8 +100,35 @@ public class TripParticipant {
         this.confirmationStatus = ConfirmationStatus.CANCELLED;
     }
 
+    /**
+     * Step 1: Creator accepts the join request.
+     */
+    public void creatorAccept() {
+        this.confirmationStatus = ConfirmationStatus.CREATOR_ACCEPTED;
+    }
+
+    /**
+     * Step 2: Chat confirmation buttons become active for both parties.
+     */
+    public void awaitMutualConfirm() {
+        this.confirmationStatus = ConfirmationStatus.AWAITING_MUTUAL_CONFIRM;
+    }
+
+    /**
+     * Step 3: Both parties confirmed in chat — fully committed.
+     */
+    public void fullyConfirm() {
+        this.confirmationStatus = ConfirmationStatus.FULLY_CONFIRMED;
+        this.confirmedAt = Instant.now();
+    }
+
+
+    /**
+     * Check if participant is fully confirmed (handles both legacy CONFIRMED and new FULLY_CONFIRMED).
+     */
     public boolean isConfirmed() {
-        return this.confirmationStatus == ConfirmationStatus.CONFIRMED;
+        return this.confirmationStatus == ConfirmationStatus.CONFIRMED
+                || this.confirmationStatus == ConfirmationStatus.FULLY_CONFIRMED;
     }
 
     public boolean isPending() {

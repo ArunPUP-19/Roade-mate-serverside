@@ -58,6 +58,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/requests/**", "/api/places/**").permitAll()
                 // All notification endpoints require authentication
                 .requestMatchers("/api/notifications/**").authenticated()
+                // Penalty and account lock endpoints require authentication
+                .requestMatchers("/api/penalties/**").authenticated()
                 .requestMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
             )

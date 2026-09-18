@@ -156,7 +156,8 @@ public class Trip {
     // --- State transition helpers ---
 
     public boolean isJoinable() {
-        return (status == TripStatus.ACTIVE || status == TripStatus.PENDING_CONFIRMATION)
+        return (status == TripStatus.ACTIVE || status == TripStatus.PENDING_CONFIRMATION
+                || status == TripStatus.AWAITING_MUTUAL_CONFIRM)
                 && seatsAvailable > 0;
     }
 
@@ -173,10 +174,17 @@ public class Trip {
     public void incrementSeats() {
         this.seatsAvailable++;
         if (this.status == TripStatus.FULL) {
-            // Restore to PENDING_CONFIRMATION if there are still other pending participants,
-            // otherwise back to ACTIVE
+            // Restore to appropriate state
             this.status = TripStatus.PENDING_CONFIRMATION;
         }
+    }
+
+    /**
+     * Transition to AWAITING_MUTUAL_CONFIRM when creator accepts a request.
+     * Trip remains visible on the discovery board in this state.
+     */
+    public void awaitMutualConfirm() {
+        this.status = TripStatus.AWAITING_MUTUAL_CONFIRM;
     }
 
     public void lock() {

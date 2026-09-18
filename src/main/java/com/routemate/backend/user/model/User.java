@@ -50,6 +50,12 @@ public class User {
     @Column(name = "deleted_at")
     private Instant deletedAt;
 
+    @Column(name = "penalty_locked", nullable = false)
+    private boolean penaltyLocked = false;
+
+    @Column(name = "penalty_locked_at")
+    private Instant penaltyLockedAt;
+
     @Version
     private Integer version;
 
@@ -73,5 +79,21 @@ public class User {
         user.setPasswordHash(passwordHash);
         user.setDisplayName(displayName);
         return user;
+    }
+
+    /**
+     * Lock the account due to unpaid cancellation penalty.
+     */
+    public void lockForPenalty() {
+        this.penaltyLocked = true;
+        this.penaltyLockedAt = Instant.now();
+    }
+
+    /**
+     * Unlock the account after penalty is settled.
+     */
+    public void unlockFromPenalty() {
+        this.penaltyLocked = false;
+        this.penaltyLockedAt = null;
     }
 }

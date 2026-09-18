@@ -1,10 +1,14 @@
 package com.routemate.backend.trip.controller;
 
 import com.routemate.backend.trip.dto.CreateTripRequest;
+import com.routemate.backend.trip.dto.CooldownStatusDto;
 import com.routemate.backend.trip.dto.LocationUploadRequest;
 import com.routemate.backend.trip.dto.TripDetailDto;
 import com.routemate.backend.trip.dto.TripDto;
+import com.routemate.backend.trip.service.CancellationService;
 import com.routemate.backend.trip.service.TripService;
+import com.routemate.backend.user.model.User;
+import com.routemate.backend.user.repository.UserRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,6 +28,8 @@ import java.util.UUID;
 public class TripController {
 
     private final TripService tripService;
+    private final CancellationService cancellationService;
+    private final UserRepository userRepository;
 
     // --- Trip CRUD ---
 
@@ -251,5 +257,20 @@ public class TripController {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(tripService.sendTripMessage(tripId, content.trim()));
+    }
+
+    // --- Cooldown Status ---
+
+    /**
+     * GET /api/trips/{tripId}/cooldown-status
+     * Check if the current user has an active cooldown for this trip.
+     */
+    @GetMapping("/{tripId}/cooldown-status")
+    public ResponseEntity<CooldownStatusDto> getCooldownStatus(@PathVariable Long tripId) {
+        String email = org.springframework.security.core.context.SecurityContextHolder
+                .getContext().getAuthentication().getName();
+        User user = userRepository.findByEmailAndDeletedAtIsNull(email)
+                .orElseThrow(() -> new RuntimeException("Authenticated user not found"));
+        return ResponseEntity.ok(cancellationService.getCooldownStatus(user.getId(), tripId));
     }
 }

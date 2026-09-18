@@ -41,6 +41,8 @@ public class TripService {
     private final TripMessageRepository tripMessageRepository;
     private final TripLocationVerificationRepository locationVerificationRepository;
     private final NotificationService notificationService;
+    private final CancellationService cancellationService;
+    private final ChatConfirmationService chatConfirmationService;
 
     // --- Trip CRUD ---
 
@@ -72,6 +74,9 @@ public class TripService {
     @Transactional
     public TripDto createTrip(CreateTripRequest request) {
         User driver = getCurrentUser();
+
+        // Block if account is locked due to unpaid penalties
+        cancellationService.enforceAccountLock(driver);
 
         // Block trip creation if user already has an active trip as driver
         if (tripRepository.hasActiveTripAsDriver(driver.getId())) {
@@ -114,6 +119,12 @@ public class TripService {
         Trip trip = findTripOrThrow(tripId);
         User user = getCurrentUser();
 
+        // Block if account is locked due to unpaid penalties
+        cancellationService.enforceAccountLock(user);
+
+        // Check 30-minute cooldown for this specific trip
+        cancellationService.enforceCooldown(user.getId(), tripId);
+
         // Validate: can't join your own trip
         if (trip.isOrganizer(user)) {
             throw new BusinessRuleViolationException("You cannot join your own trip");
@@ -125,7 +136,7 @@ public class TripService {
                 "This trip is not accepting new participants (status: " + trip.getStatus() + ")");
         }
 
-        // Validate: no duplicate join requests
+        // Validate: no duplicate join requests (only active ones)
         if (participantRepository.existsByTripIdAndUserId(tripId, user.getId())) {
             throw new BusinessRuleViolationException("You have already requested to join this trip");
         }
@@ -176,10 +187,44 @@ public class TripService {
             throw new BusinessRuleViolationException("Cannot leave a trip that is " + trip.getStatus());
         }
 
+        // Check if penalty applies (for accepted/confirmed participants)
+        ConfirmationStatus priorStatus = participant.getConfirmationStatus();
+        if (priorStatus == ConfirmationStatus.CREATOR_ACCEPTED
+                || priorStatus == ConfirmationStatus.AWAITING_MUTUAL_CONFIRM
+                || priorStatus == ConfirmationStatus.FULLY_CONFIRMED) {
+
+            // Determine the other party (creator) and split amount
+            User otherParty = trip.getDriver();
+            int splitAmount = trip.getYourSplit() != null ? trip.getYourSplit() : 0;
+
+            // Assess penalty based on time since acceptance
+            cancellationService.assessPenalty(
+                    trip, user, otherParty, participant.getConfirmedAt(), splitAmount);
+        }
+
+        // Cancel the participant and restore seats
         participant.cancel();
         trip.incrementSeats();
+
+        // If trip was in AWAITING_MUTUAL_CONFIRM and no more pending confirmations, revert status
+        if (trip.getStatus() == TripStatus.AWAITING_MUTUAL_CONFIRM) {
+            long awaitingCount = participantRepository.countByTripIdAndConfirmationStatus(
+                    tripId, ConfirmationStatus.AWAITING_MUTUAL_CONFIRM);
+            long creatorAcceptedCount = participantRepository.countByTripIdAndConfirmationStatus(
+                    tripId, ConfirmationStatus.CREATOR_ACCEPTED);
+            if (awaitingCount == 0 && creatorAcceptedCount == 0) {
+                long pendingCount = participantRepository.countByTripIdAndConfirmationStatus(
+                        tripId, ConfirmationStatus.PENDING);
+                trip.setStatus(pendingCount > 0 ? TripStatus.PENDING_CONFIRMATION : TripStatus.ACTIVE);
+            }
+        }
+
         tripRepository.save(trip);
-        log.info("User {} left trip {}", user.getEmail(), tripId);
+
+        // Always apply 30-minute cooldown for this specific trip
+        cancellationService.createCooldown(user, trip);
+
+        log.info("User {} left trip {} (prior status: {})", user.getEmail(), tripId, priorStatus);
 
         return TripMapper.toDetailDto(trip);
     }
@@ -205,26 +250,46 @@ public class TripService {
                 "Participant is not in PENDING status (current: " + participant.getConfirmationStatus() + ")");
         }
 
-        participant.confirm();
+        // Step 1: Creator accepts → participant transitions to CREATOR_ACCEPTED → AWAITING_MUTUAL_CONFIRM
+        participant.creatorAccept();
+        participant.awaitMutualConfirm();
         participantRepository.save(participant);
-        log.info("Participant {} confirmed for trip {}", participantPublicId, tripId);
+        log.info("Participant {} accepted by creator for trip {} — now AWAITING_MUTUAL_CONFIRM",
+                participantPublicId, tripId);
 
-        // Notify the participant that their request was accepted
+        // Transition trip to AWAITING_MUTUAL_CONFIRM (still visible on discovery board)
+        trip.awaitMutualConfirm();
+        tripRepository.save(trip);
+
+        // Initialize the two-way chat confirmation
+        chatConfirmationService.initConfirmation(trip, participant);
+
+        // Notify the participant that their request was accepted (Step 1 complete)
         notificationService.createNotification(
             participant.getUser(), organizer, trip, participant.getPublicId(),
             NotificationType.TRIP_REQUEST_ACCEPTED,
             "Request Accepted! 🎉",
             "Your request to join the " +
-                trip.getStartingLocation() + " → " + trip.getDestination() + " trip has been accepted!"
+                trip.getStartingLocation() + " → " + trip.getDestination() +
+                " trip has been accepted! Please confirm in the trip chat."
         );
 
-        // Check if all pending participants are now confirmed
-        long pendingCount = participantRepository.countByTripIdAndConfirmationStatus(tripId, ConfirmationStatus.PENDING);
-        if (pendingCount == 0 && trip.getStatus() == TripStatus.PENDING_CONFIRMATION) {
-            trip.setStatus(TripStatus.CONFIRMED);
-            tripRepository.save(trip);
-            log.info("All participants confirmed for trip {} — status now CONFIRMED", tripId);
-        }
+        // Notify both parties that chat confirmation is ready
+        notificationService.createNotification(
+            participant.getUser(), organizer, trip, participant.getPublicId(),
+            NotificationType.CHAT_CONFIRM_READY,
+            "Confirm in Chat",
+            "Please open the trip chat and tap 'Accept' to finalize your booking for " +
+                trip.getStartingLocation() + " → " + trip.getDestination() + "."
+        );
+
+        notificationService.createNotification(
+            organizer, participant.getUser(), trip, participant.getPublicId(),
+            NotificationType.CHAT_CONFIRM_READY,
+            "Confirm in Chat",
+            "Please open the trip chat and tap 'Accept' to finalize the booking with " +
+                participant.getUser().getDisplayName() + "."
+        );
 
         return TripMapper.toDetailDto(trip);
     }
@@ -279,8 +344,10 @@ public class TripService {
         User organizer = getCurrentUser();
         ensureOrganizer(trip, organizer);
 
-        if (trip.getStatus() != TripStatus.CONFIRMED && trip.getStatus() != TripStatus.PENDING_CONFIRMATION) {
-            throw new BusinessRuleViolationException("Trip must be CONFIRMED or PENDING_CONFIRMATION to lock");
+        if (trip.getStatus() != TripStatus.CONFIRMED && trip.getStatus() != TripStatus.PENDING_CONFIRMATION
+                && trip.getStatus() != TripStatus.AWAITING_MUTUAL_CONFIRM) {
+            throw new BusinessRuleViolationException(
+                    "Trip must be CONFIRMED, PENDING_CONFIRMATION, or AWAITING_MUTUAL_CONFIRM to lock");
         }
 
         // Reject any remaining pending participants
@@ -536,8 +603,13 @@ public class TripService {
     private void ensureConfirmedParticipant(Long tripId, Long userId) {
         TripParticipant participant = participantRepository.findByTripIdAndUserId(tripId, userId)
             .orElseThrow(() -> new BusinessRuleViolationException("You are not a participant of this trip"));
-            
-        if (participant.getConfirmationStatus() != ConfirmationStatus.CONFIRMED) {
+
+        // Allow chat access for CONFIRMED, FULLY_CONFIRMED, and AWAITING_MUTUAL_CONFIRM participants
+        ConfirmationStatus status = participant.getConfirmationStatus();
+        if (status != ConfirmationStatus.CONFIRMED
+                && status != ConfirmationStatus.FULLY_CONFIRMED
+                && status != ConfirmationStatus.AWAITING_MUTUAL_CONFIRM
+                && status != ConfirmationStatus.CREATOR_ACCEPTED) {
             throw new BusinessRuleViolationException("Only confirmed participants can access trip chat");
         }
     }
