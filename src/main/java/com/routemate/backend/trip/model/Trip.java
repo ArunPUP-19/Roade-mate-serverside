@@ -75,7 +75,7 @@ public class Trip {
     private String vehicleDetails;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 25)
+    @Column(nullable = false, length = 50)
     private TripStatus status = TripStatus.ACTIVE;
 
     @Column(name = "locked_at")

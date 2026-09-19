@@ -39,7 +39,7 @@ public class TripParticipant {
     private ParticipantRole role = ParticipantRole.PASSENGER;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "confirmation_status", nullable = false, length = 20)
+    @Column(name = "confirmation_status", nullable = false, length = 50)
     private ConfirmationStatus confirmationStatus = ConfirmationStatus.PENDING;
 
     @Column(name = "confirmed_at")
